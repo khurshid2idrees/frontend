@@ -1,12 +1,13 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import React, { useEffect, useState } from "react";
+import UserTable from "./Components/UserTable";
+import UserData from "./Components/UserData";
 
 function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:1337/api/books", {
+    fetch("http://localhost:1337/api/memberdetails?populate=months", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -17,11 +18,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {data.map((index) => (
-        <h1 key={index.id}>{index.attributes.name}</h1>
-      ))}
-    </div>
+    // <UserTable data={data} />
+    <UserData data={data} />
   );
 }
 
